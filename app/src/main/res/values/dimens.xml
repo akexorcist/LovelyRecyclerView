@@ -1,0 +1,18 @@
+<resources>
+
+    <dimen name="text_size_extra_small">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_extra_large">24sp</dimen>
+
+    <dimen name="margin_padding_small">4dp</dimen>
+    <dimen name="margin_padding">8dp</dimen>
+    <dimen name="margin_padding_large">16dp</dimen>
+    <dimen name="margin_padding_extra_large">24dp</dimen>
+
+    <dimen name="min_button_width">120dp</dimen>
+    <dimen name="empty_space_height">16dp</dimen>
+    <dimen name="user_icon_size">30dp</dimen>
+
+</resources>

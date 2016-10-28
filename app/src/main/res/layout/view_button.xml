@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_padding_small"
+    android:layout_marginEnd="@dimen/margin_padding"
+    android:layout_marginStart="@dimen/margin_padding"
+    android:layout_marginTop="@dimen/margin_padding_small"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/margin_padding"
+    android:paddingEnd="@dimen/margin_padding_large"
+    android:paddingStart="@dimen/margin_padding_large"
+    android:paddingTop="@dimen/margin_padding">
+
+    <Button
+        android:id="@+id/btn_negative"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/margin_padding"
+        android:background="@drawable/selector_button_negative"
+        android:minWidth="@dimen/min_button_width"
+        android:text="@string/cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/angel_white"
+        android:textSize="@dimen/text_size" />
+
+    <Button
+        android:id="@+id/btn_positive"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_padding"
+        android:background="@drawable/selector_button_positive"
+        android:minWidth="@dimen/min_button_width"
+        android:text="@string/confirm"
+        android:textAllCaps="false"
+        android:textColor="@color/angel_white"
+        android:textSize="@dimen/text_size" />
+
+</LinearLayout>
+
