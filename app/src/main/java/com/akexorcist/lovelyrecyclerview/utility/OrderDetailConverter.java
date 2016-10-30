@@ -1,5 +1,7 @@
 package com.akexorcist.lovelyrecyclerview.utility;
 
+import android.content.Context;
+
 import com.akexorcist.lovelyrecyclerview.adapter.model.BaseOrderDetailItem;
 import com.akexorcist.lovelyrecyclerview.adapter.model.ButtonItem;
 import com.akexorcist.lovelyrecyclerview.adapter.model.EmptyItem;
@@ -89,7 +91,12 @@ public class OrderDetailConverter {
         return new EmptyItem();
     }
 
-    public static List<BaseOrderDetailItem> createSectionAndOrder(OrderDetail orderDetail, String foodTitle, String bookTitle, String musicTitle, String currency) {
+    public static List<BaseOrderDetailItem> createSectionAndOrder(Context context,
+                                                                  OrderDetail orderDetail,
+                                                                  String foodTitle,
+                                                                  String bookTitle,
+                                                                  String musicTitle,
+                                                                  String currency) {
         List<BaseOrderDetailItem> orderDetailItemList = new ArrayList<>();
         orderDetailItemList.addAll(getFoodOrderDetailList(orderDetail.getFoodList(), foodTitle, currency));
         orderDetailItemList.addAll(getBookOrderDetailList(orderDetail.getBookList(), bookTitle, currency));
@@ -97,7 +104,9 @@ public class OrderDetailConverter {
         return orderDetailItemList;
     }
 
-    private static List<BaseOrderDetailItem> getFoodOrderDetailList(List<OrderDetail.Food> foodList, String foodTitle, String currency) {
+    private static List<BaseOrderDetailItem> getFoodOrderDetailList(List<OrderDetail.Food> foodList,
+                                                                    String foodTitle,
+                                                                    String currency) {
         List<BaseOrderDetailItem> foodOrderDetailList = new ArrayList<>();
         if (foodList != null && foodList.size() > 0) {
             foodOrderDetailList.add(createSection(foodTitle));
@@ -111,7 +120,9 @@ public class OrderDetailConverter {
         return foodOrderDetailList;
     }
 
-    private static List<BaseOrderDetailItem> getBookOrderDetailList(List<OrderDetail.Book> bookList, String bookTitle, String currency) {
+    private static List<BaseOrderDetailItem> getBookOrderDetailList(List<OrderDetail.Book> bookList,
+                                                                    String bookTitle,
+                                                                    String currency) {
         List<BaseOrderDetailItem> bookOrderDetailList = new ArrayList<>();
         if (bookList != null && bookList.size() > 0) {
             bookOrderDetailList.add(createSection(bookTitle));
@@ -125,7 +136,9 @@ public class OrderDetailConverter {
         return bookOrderDetailList;
     }
 
-    private static List<BaseOrderDetailItem> getMusicOrderDetailList(List<OrderDetail.Music> musicList, String musicTitle, String currency) {
+    private static List<BaseOrderDetailItem> getMusicOrderDetailList(List<OrderDetail.Music> musicList,
+                                                                     String musicTitle,
+                                                                     String currency) {
         List<BaseOrderDetailItem> musicOrderDetailList = new ArrayList<>();
         if (musicList != null && musicList.size() > 0) {
             musicOrderDetailList.add(createSection(musicTitle));
@@ -145,7 +158,9 @@ public class OrderDetailConverter {
         return sectionItem;
     }
 
-    private static OrderItem createOrder(String name, String detail, String price) {
+    private static OrderItem createOrder(String name,
+                                         String detail,
+                                         String price) {
         OrderItem orderItem = new OrderItem();
         orderItem.setName(name);
         orderItem.setDetail(detail);
@@ -153,7 +168,11 @@ public class OrderDetailConverter {
         return orderItem;
     }
 
-    public static List<SummaryItem> createSummary(OrderDetail orderDetail, String foodTitle, String bookTitle, String musicTitle, String currency) {
+    public static List<SummaryItem> createSummary(OrderDetail orderDetail,
+                                                  String foodTitle,
+                                                  String bookTitle,
+                                                  String musicTitle,
+                                                  String currency) {
         List<SummaryItem> summaryItemList = new ArrayList<>();
         if (orderDetail != null) {
             summaryItemList.addAll(getFoodSummary(orderDetail.getFoodList(), foodTitle, currency));
@@ -163,7 +182,9 @@ public class OrderDetailConverter {
         return summaryItemList;
     }
 
-    private static List<SummaryItem> getFoodSummary(List<OrderDetail.Food> foodList, String foodTitle, String currency) {
+    private static List<SummaryItem> getFoodSummary(List<OrderDetail.Food> foodList,
+                                                    String foodTitle,
+                                                    String currency) {
         List<SummaryItem> foodSummaryItemList = new ArrayList<>();
         if (foodList != null && foodList.size() > 0) {
             SummaryItem summaryItem = new SummaryItem();
@@ -174,7 +195,9 @@ public class OrderDetailConverter {
         return foodSummaryItemList;
     }
 
-    private static List<SummaryItem> getBookSummary(List<OrderDetail.Book> bookList, String bookTitle, String currency) {
+    private static List<SummaryItem> getBookSummary(List<OrderDetail.Book> bookList,
+                                                    String bookTitle,
+                                                    String currency) {
         List<SummaryItem> bookSummaryItemList = new ArrayList<>();
         if (bookList != null && bookList.size() > 0) {
             SummaryItem summaryItem = new SummaryItem();
@@ -185,7 +208,9 @@ public class OrderDetailConverter {
         return bookSummaryItemList;
     }
 
-    private static List<SummaryItem> getMusicSummary(List<OrderDetail.Music> musicList, String musicTitle, String currency) {
+    private static List<SummaryItem> getMusicSummary(List<OrderDetail.Music> musicList,
+                                                     String musicTitle,
+                                                     String currency) {
         List<SummaryItem> bookSummaryItemList = new ArrayList<>();
         if (musicList != null && musicList.size() > 0) {
             SummaryItem summaryItem = new SummaryItem();
