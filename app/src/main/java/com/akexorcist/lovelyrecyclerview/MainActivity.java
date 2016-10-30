@@ -1,6 +1,7 @@
 package com.akexorcist.lovelyrecyclerview;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -58,19 +59,37 @@ public class MainActivity extends AppCompatActivity implements OrderAdapter.OnIt
         String musicTitle = getString(R.string.music);
         String currency = getString(R.string.baht_unit);
 
+        int foodTitleColor = ContextCompat.getColor(this, R.color.sky_light_blue);
+        int bookTitleColor = ContextCompat.getColor(this, R.color.funny_dark_pink);
+        int musicTitleColor = ContextCompat.getColor(this, R.color.natural_green);
+
         List<BaseOrderDetailItem> orderDetailItemList = new ArrayList<>();
         orderDetailItemList.add(OrderDetailConverter.createUserDetail(name));
-        orderDetailItemList.add(OrderDetailConverter.createTitle(yourOrderTitle));
-        orderDetailItemList.addAll(OrderDetailConverter.createSectionAndOrder(orderDetail, foodTitle, bookTitle, musicTitle, currency));
-        orderDetailItemList.add(OrderDetailConverter.createTitle(summaryTitle));
-        orderDetailItemList.addAll(OrderDetailConverter.createSummary(orderDetail, foodTitle, bookTitle, musicTitle, currency));
-        orderDetailItemList.add(OrderDetailConverter.createTotal(orderDetail, currency));
-        orderDetailItemList.add(OrderDetailConverter.createNotice());
-        orderDetailItemList.add(OrderDetailConverter.createButton());
+        if (isOrderDetailAvailable(orderDetail)) {
+            orderDetailItemList.add(OrderDetailConverter.createTitle(yourOrderTitle));
+            orderDetailItemList.addAll(OrderDetailConverter.createSectionAndOrder(orderDetail, foodTitle, bookTitle, musicTitle, currency, foodTitleColor, bookTitleColor, musicTitleColor));
+            orderDetailItemList.add(OrderDetailConverter.createTitle(summaryTitle));
+            orderDetailItemList.addAll(OrderDetailConverter.createSummary(orderDetail, foodTitle, bookTitle, musicTitle, currency));
+            orderDetailItemList.add(OrderDetailConverter.createTotal(orderDetail, currency));
+            orderDetailItemList.add(OrderDetailConverter.createNotice());
+            orderDetailItemList.add(OrderDetailConverter.createButton());
+        } else {
+            orderDetailItemList.add(OrderDetailConverter.createTitle(yourOrderTitle));
+            orderDetailItemList.add(OrderDetailConverter.createNoOrder());
+            orderDetailItemList.add(OrderDetailConverter.createTitle(summaryTitle));
+            orderDetailItemList.add(OrderDetailConverter.createTotal(orderDetail, currency));
+        }
         orderDetailItemList.add(OrderDetailConverter.createEmpty());
 
         orderAdapter.setOrderItemList(orderDetailItemList);
         orderAdapter.notifyDataSetChanged();
+    }
+
+    private boolean isOrderDetailAvailable(OrderDetail orderDetail) {
+        return orderDetail != null &&
+                ((orderDetail.getFoodList() != null && !orderDetail.getFoodList().isEmpty()) ||
+                        (orderDetail.getBookList() != null && !orderDetail.getBookList().isEmpty()) ||
+                        (orderDetail.getMusicList() != null && orderDetail.getMusicList().isEmpty()));
     }
 
     @Override

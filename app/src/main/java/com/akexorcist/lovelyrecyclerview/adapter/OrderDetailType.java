@@ -15,5 +15,6 @@ public class OrderDetailType {
     public static final int TYPE_TOTAL = 6;
     public static final int TYPE_NOTICE = 7;
     public static final int TYPE_BUTTON = 8;
+    public static final int TYPE_NO_ORDER = 9;
 
 }

@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_section_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/margin_padding_small"
     android:layout_marginEnd="@dimen/margin_padding"
     android:layout_marginStart="@dimen/margin_padding"
     android:layout_marginTop="@dimen/margin_padding_small"
-    android:background="@color/sky_light_blue"
+    android:background="@color/angel_white"
     android:orientation="horizontal"
-    android:paddingBottom="@dimen/margin_padding_small"
-    android:paddingEnd="@dimen/margin_padding_large"
-    android:paddingStart="@dimen/margin_padding_large"
-    android:paddingTop="@dimen/margin_padding_small">
+    android:padding="@dimen/margin_padding">
 
     <TextView
-        android:id="@+id/tv_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/angel_white"
+        android:gravity="center"
+        android:text="@string/no_order_selected"
+        android:textColor="@color/space_gray"
         android:textSize="@dimen/text_size" />
 
 </LinearLayout>
