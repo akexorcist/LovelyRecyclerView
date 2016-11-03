@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements OrderAdapter.OnIt
         return orderDetail != null &&
                 ((orderDetail.getFoodList() != null && !orderDetail.getFoodList().isEmpty()) ||
                         (orderDetail.getBookList() != null && !orderDetail.getBookList().isEmpty()) ||
-                        (orderDetail.getMusicList() != null && orderDetail.getMusicList().isEmpty()));
+                        (orderDetail.getMusicList() != null && !orderDetail.getMusicList().isEmpty()));
     }
 
     @Override
