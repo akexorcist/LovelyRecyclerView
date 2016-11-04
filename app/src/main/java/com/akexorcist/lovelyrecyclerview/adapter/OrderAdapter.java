@@ -109,7 +109,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         } else if (holder instanceof OrderViewHolder) {
             OrderViewHolder orderViewHolder = (OrderViewHolder) holder;
             OrderItem orderItem = (OrderItem) orderDetailItem;
-            setupOrder(orderViewHolder, orderItem);
+            setupOrder(orderViewHolder, orderItem, position);
 
         } else if (holder instanceof SummaryViewHolder) {
             SummaryViewHolder summaryViewHolder = (SummaryViewHolder) holder;
@@ -171,10 +171,20 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         sectionViewHolder.layoutSectionContainer.setBackgroundColor(sectionItem.getBackgroundColor());
     }
 
-    private void setupOrder(OrderViewHolder orderViewHolder, OrderItem orderItem) {
+    private void setupOrder(OrderViewHolder orderViewHolder, final OrderItem orderItem, int position) {
+        final int index = position;
         orderViewHolder.tvOrderName.setText(orderItem.getName());
         orderViewHolder.tvOrderDetail.setText(orderItem.getDetail());
         orderViewHolder.tvOrderPrice.setText(orderItem.getPrice());
+        orderViewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onOrderRemove(orderItem, index);
+                }
+                return true;
+            }
+        });
     }
 
     private void setupSummary(SummaryViewHolder summaryViewHolder, SummaryItem summaryItem) {
@@ -227,5 +237,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         void onPositiveButtonClick();
 
         void onNegativeButtonClick();
+
+        void onOrderRemove(OrderItem orderItem, int position);
     }
 }
