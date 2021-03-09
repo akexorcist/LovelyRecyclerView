@@ -41,21 +41,6 @@ object OrderDetailConverter {
         return OrderDetailItem.NoOrder
     }
 
-    fun createSection(title: String, titleColor: Int): OrderDetailItem.Section {
-        return OrderDetailItem.Section(
-            section = title,
-            backgroundColor = titleColor
-        )
-    }
-
-    fun createOrder(name: String, detail: String, price: String): OrderDetailItem.Order {
-        return OrderDetailItem.Order(
-            name = name,
-            detail = detail,
-            price = price
-        )
-    }
-
     fun createSectionAndOrder(
         orderDetail: OrderDetail,
         foodTitle: String,
@@ -69,7 +54,12 @@ object OrderDetailConverter {
         return mutableListOf<OrderDetailItem>().apply {
             // Food
             if (!orderDetail.foodList.isNullOrEmpty()) {
-                add(createSection(foodTitle, foodTitleColor))
+                add(
+                    OrderDetailItem.Section(
+                        section = foodTitle,
+                        backgroundColor = foodTitleColor
+                    )
+                )
                 addAll(
                     orderDetail.foodList.map { food ->
                         OrderDetailItem.Order(
@@ -82,7 +72,12 @@ object OrderDetailConverter {
 
             // Book
             if (!orderDetail.bookList.isNullOrEmpty()) {
-                add(createSection(bookTitle, bookTitleColor))
+                add(
+                    OrderDetailItem.Section(
+                        section = bookTitle,
+                        backgroundColor = bookTitleColor
+                    )
+                )
                 addAll(
                     orderDetail.bookList.map { book ->
                         OrderDetailItem.Order(
@@ -95,7 +90,12 @@ object OrderDetailConverter {
 
             // Music
             if (!orderDetail.musicList.isNullOrEmpty()) {
-                add(createSection(musicTitle, musicTitleColor))
+                add(
+                    OrderDetailItem.Section(
+                        section = musicTitle,
+                        backgroundColor = musicTitleColor
+                    )
+                )
                 addAll(
                     orderDetail.musicList.map { music ->
                         OrderDetailItem.Order(
