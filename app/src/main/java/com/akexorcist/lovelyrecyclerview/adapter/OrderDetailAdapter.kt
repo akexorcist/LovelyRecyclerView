@@ -73,12 +73,9 @@ class OrderDetailAdapter(
                     holder.bind(item)
                 holder is ButtonViewHolder && item is OrderDetailItem.Button ->
                     holder.bind({ onPositiveButtonClicked.invoke() }, { onNegativeButtonClicked.invoke() })
-                holder is NoticeViewHolder && item is OrderDetailItem.Notice -> { /* Do nothing */
-                }
-                holder is EmptyViewHolder && item is OrderDetailItem.Empty -> { /* Do nothing */
-                }
-                holder is NoOrderViewHolder && item is OrderDetailItem.NoOrder -> { /* Do nothing */
-                }
+                holder is NoticeViewHolder && item is OrderDetailItem.Notice -> { /* Do nothing */ }
+                holder is EmptyViewHolder && item is OrderDetailItem.Empty -> { /* Do nothing */ }
+                holder is NoOrderViewHolder && item is OrderDetailItem.NoOrder -> { /* Do nothing */ }
             }
         }
     }
