@@ -3,7 +3,7 @@ package com.akexorcist.lovelyrecyclerview.util
 import androidx.recyclerview.widget.DiffUtil
 import com.akexorcist.lovelyrecyclerview.adapter.model.OrderDetailItem
 
-class OrderListDiffCallback(
+class OrderDetailDiffCallback(
     private val oldItems: List<OrderDetailItem>?,
     private val newItems: List<OrderDetailItem>?
 ) : DiffUtil.Callback() {

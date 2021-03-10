@@ -12,7 +12,7 @@ import com.akexorcist.lovelyrecyclerview.databinding.ActivityMainBinding
 import com.akexorcist.lovelyrecyclerview.network.FakeNetwork
 import com.akexorcist.lovelyrecyclerview.network.response.OrderDetail
 import com.akexorcist.lovelyrecyclerview.util.OrderDetailConverter
-import com.akexorcist.lovelyrecyclerview.util.OrderListDiffCallback
+import com.akexorcist.lovelyrecyclerview.util.OrderDetailDiffCallback
 import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateOrderDetailItems(oldItems: List<OrderDetailItem>, newItems: List<OrderDetailItem>) {
         adapter.orderDetailItems = newItems
-        DiffUtil.calculateDiff(OrderListDiffCallback(oldItems, newItems))
+        DiffUtil.calculateDiff(OrderDetailDiffCallback(oldItems, newItems))
             .dispatchUpdatesTo(adapter)
     }
 
