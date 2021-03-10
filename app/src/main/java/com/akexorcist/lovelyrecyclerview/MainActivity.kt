@@ -52,36 +52,16 @@ class MainActivity : AppCompatActivity() {
         val musicTitle = getString(R.string.music)
         val currency = getString(R.string.baht_unit)
 
-        val foodTitleColor = ContextCompat.getColor(this, R.color.sky_light_blue)
-        val bookTitleColor = ContextCompat.getColor(this, R.color.funny_dark_pink)
-        val musicTitleColor = ContextCompat.getColor(this, R.color.natural_green)
-
-        return if (isOrderDetailAvailable(orderDetail)) {
-            mutableListOf<OrderDetailItem>().apply {
-                add(OrderDetailConverter.createUserDetail(name))
-                add(OrderDetailConverter.createTitle(title))
-                addAll(OrderDetailConverter.createSectionAndOrder(orderDetail, foodTitle, bookTitle, musicTitle, currency, foodTitleColor, bookTitleColor, musicTitleColor))
-                add(OrderDetailConverter.createTitle(summaryTitle))
-                addAll(OrderDetailConverter.createSummary(orderDetail, foodTitle, bookTitle, musicTitle, currency))
-                add(OrderDetailConverter.createTotal(orderDetail, currency))
-                add(OrderDetailConverter.createNotice())
-                add(OrderDetailConverter.createButton())
-            }
-        } else {
-            mutableListOf<OrderDetailItem>().apply {
-                add(OrderDetailConverter.createUserDetail(name))
-                add(OrderDetailConverter.createTitle(title))
-                add(OrderDetailConverter.createNoOrder())
-                add(OrderDetailConverter.createTitle(summaryTitle))
-                add(OrderDetailConverter.createTotal(orderDetail, currency))
-            }
+        return mutableListOf<OrderDetailItem>().apply {
+            add(OrderDetailConverter.createUserDetail(name))
+            add(OrderDetailConverter.createTitle(title))
+            addAll(OrderDetailConverter.createSectionAndOrder(orderDetail, foodTitle, bookTitle, musicTitle, currency))
+            add(OrderDetailConverter.createTitle(summaryTitle))
+            addAll(OrderDetailConverter.createSummary(orderDetail, foodTitle, bookTitle, musicTitle, currency))
+            add(OrderDetailConverter.createTotal(orderDetail, currency))
+            add(OrderDetailConverter.createNotice())
+            add(OrderDetailConverter.createButton())
         }
-    }
-
-    private fun isOrderDetailAvailable(orderDetail: OrderDetail): Boolean {
-        return orderDetail.foodList?.isNotEmpty() == true ||
-                orderDetail.bookList?.isNotEmpty() == true ||
-                orderDetail.musicList?.isNotEmpty() == true
     }
 
     private fun updateOrderDetailItems(newItems: List<OrderDetailItem>) {

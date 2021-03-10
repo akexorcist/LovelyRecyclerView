@@ -37,27 +37,19 @@ object OrderDetailConverter {
         return OrderDetailItem.Empty
     }
 
-    fun createNoOrder(): OrderDetailItem.NoOrder {
-        return OrderDetailItem.NoOrder
-    }
-
     fun createSectionAndOrder(
         orderDetail: OrderDetail,
         foodTitle: String,
         bookTitle: String,
         musicTitle: String,
-        currency: String,
-        foodTitleColor: Int,
-        bookTitleColor: Int,
-        musicTitleColor: Int
+        currency: String
     ): List<OrderDetailItem> {
         return mutableListOf<OrderDetailItem>().apply {
             // Food
             if (!orderDetail.foodList.isNullOrEmpty()) {
                 add(
                     OrderDetailItem.Section(
-                        section = foodTitle,
-                        backgroundColor = foodTitleColor
+                        section = foodTitle
                     )
                 )
                 addAll(
@@ -74,8 +66,7 @@ object OrderDetailConverter {
             if (!orderDetail.bookList.isNullOrEmpty()) {
                 add(
                     OrderDetailItem.Section(
-                        section = bookTitle,
-                        backgroundColor = bookTitleColor
+                        section = bookTitle
                     )
                 )
                 addAll(
@@ -92,8 +83,7 @@ object OrderDetailConverter {
             if (!orderDetail.musicList.isNullOrEmpty()) {
                 add(
                     OrderDetailItem.Section(
-                        section = musicTitle,
-                        backgroundColor = musicTitleColor
+                        section = musicTitle
                     )
                 )
                 addAll(

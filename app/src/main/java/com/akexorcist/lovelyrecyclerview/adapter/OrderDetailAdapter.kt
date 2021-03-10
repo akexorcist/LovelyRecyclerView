@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.akexorcist.lovelyrecyclerview.adapter.holder.ButtonViewHolder
 import com.akexorcist.lovelyrecyclerview.adapter.holder.EmptyViewHolder
-import com.akexorcist.lovelyrecyclerview.adapter.holder.NoOrderViewHolder
 import com.akexorcist.lovelyrecyclerview.adapter.holder.NoticeViewHolder
 import com.akexorcist.lovelyrecyclerview.adapter.holder.OrderViewHolder
 import com.akexorcist.lovelyrecyclerview.adapter.holder.SectionViewHolder
@@ -16,7 +15,6 @@ import com.akexorcist.lovelyrecyclerview.adapter.holder.UserDetailViewHolder
 import com.akexorcist.lovelyrecyclerview.adapter.model.OrderDetailItem
 import com.akexorcist.lovelyrecyclerview.databinding.ViewButtonBinding
 import com.akexorcist.lovelyrecyclerview.databinding.ViewEmptyBinding
-import com.akexorcist.lovelyrecyclerview.databinding.ViewNoOrderBinding
 import com.akexorcist.lovelyrecyclerview.databinding.ViewNoticeBinding
 import com.akexorcist.lovelyrecyclerview.databinding.ViewOrderBinding
 import com.akexorcist.lovelyrecyclerview.databinding.ViewSectionBinding
@@ -50,8 +48,6 @@ class OrderDetailAdapter(
             ButtonViewHolder(ViewButtonBinding.inflate(LayoutInflater.from(parent.context), parent, false))
         OrderDetailType.TYPE_EMPTY ->
             EmptyViewHolder(ViewEmptyBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-        OrderDetailType.TYPE_NO_ORDER ->
-            NoOrderViewHolder(ViewNoOrderBinding.inflate(LayoutInflater.from(parent.context), parent, false))
         else ->
             throw NullPointerException("View Type $viewType doesn't match with any existing order detail type")
     }
@@ -73,12 +69,8 @@ class OrderDetailAdapter(
                     holder.bind(item)
                 holder is ButtonViewHolder && item is OrderDetailItem.Button ->
                     holder.bind({ onPositiveButtonClicked.invoke() }, { onNegativeButtonClicked.invoke() })
-                holder is NoticeViewHolder && item is OrderDetailItem.Notice -> { /* Do nothing */
-                }
-                holder is EmptyViewHolder && item is OrderDetailItem.Empty -> { /* Do nothing */
-                }
-                holder is NoOrderViewHolder && item is OrderDetailItem.NoOrder -> { /* Do nothing */
-                }
+                holder is NoticeViewHolder && item is OrderDetailItem.Notice -> { /* Do nothing */ }
+                holder is EmptyViewHolder && item is OrderDetailItem.Empty -> { /* Do nothing */ }
             }
         }
     }

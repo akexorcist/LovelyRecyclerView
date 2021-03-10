@@ -17,8 +17,7 @@ sealed class OrderDetailItem(val type: Int) : Parcelable {
 
     @Parcelize
     data class Section(
-        val section: String,
-        val backgroundColor: Int
+        val section: String
     ) : OrderDetailItem(OrderDetailType.TYPE_SECTION)
 
     @Parcelize
@@ -47,7 +46,4 @@ sealed class OrderDetailItem(val type: Int) : Parcelable {
 
     @Parcelize
     object Empty : OrderDetailItem(OrderDetailType.TYPE_EMPTY)
-
-    @Parcelize
-    object NoOrder : OrderDetailItem(OrderDetailType.TYPE_NO_ORDER)
 }
